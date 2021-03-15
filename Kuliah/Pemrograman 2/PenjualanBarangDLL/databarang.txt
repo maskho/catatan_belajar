@@ -1,0 +1,86 @@
+Gula pasir
+10
+Sabun Lux
+16
+Tisu basah
+12
+Sunsilk
+17
+Pepsodent
+16
+Sensodent
+10
+Gula batu
+12
+Kacang manis
+21
+Permen pedas
+16
+Permen tanpa gula
+12
+Minuman FMK
+23
+Gula merah
+10
+Gula pasir
+16
+Sabun Lux
+6
+Tisu basah
+12
+Sunsilk
+12
+Pepsodent
+16
+Sensodent
+10
+Gula batu
+12
+Kacang manis
+15
+Permen pedas
+18
+Permen tanpa gula
+13
+Minuman FMK
+12
+Gula merah
+16
+Gula pasir
+21
+Sabun Lux
+16
+Tisu basah
+12
+Sunsilk
+22
+Pepsodent
+26
+Sensodent
+19
+Gula batu
+12
+Kacang manis
+10
+Silet goal
+21
+Minuman segar
+12
+Minuman FMK
+11
+Gula batu
+19
+Gula pasir
+17
+Rokok Filter
+18
+Tisu basah
+15
+Sunsilk
+12
+Pepsodent
+16
+Sensodent
+10
+Zaitun oil
+5

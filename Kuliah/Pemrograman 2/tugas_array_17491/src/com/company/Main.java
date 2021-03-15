@@ -1,9 +1,6 @@
 package com.company;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
-import java.io.BufferedReader;
 
 
 public class Main {
@@ -95,31 +92,65 @@ public class Main {
         return total;
     }
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        List<List<String>> data_urut_nip = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("resources/data_pegawai.txt"))){
-            String line;
-            while ((line = br.readLine())!=null){
-                String[] values = line.split(",");
-                    data_urut_nip.add(Arrays.asList(values));
-            }
-        }
-        data_urut_nip.sort(Comparator.comparing(l -> l.get(1)));
+    public static void main(String[] args) {
         List<Pegawai> pegawai_list = new ArrayList<>();
+        File fileInput = new File("resources/data_pegawai.txt");
 
-        for (List data:data_urut_nip
-             ) {
-            Pegawai pegawai = new Pegawai();
-            pegawai.setNama((String) data.get(0));
-            pegawai.setNip((String) data.get(1));
-            pegawai.setMasa((String) data.get(2));
-            pegawai.setGaji((String) data.get(3));
-            pegawai_list.add(pegawai);
+        //MENGGUNAKAN DOUBLY LINKED LIST UNTUK MEMBACA DAN MENGURUTKAN DATA PEGAWAI
+        DoublyLinkedList L = new DoublyLinkedList();
+        L.head = null;
+        L.tail = null;
+
+        try{
+            Scanner scanfile = new Scanner(fileInput);
+
+            while (scanfile.hasNextLine()){
+                Node data = new Node();
+                String line = scanfile.nextLine();
+                String[] values = line.split(",");
+                Pegawai pegawai = new Pegawai();
+                pegawai.setNama(values[0]);
+                pegawai.setNip(values[1]);
+                pegawai.setMasa(values[2]);
+                pegawai.setGaji(values[3]);
+                data.pegawai = pegawai;
+                data.prev = null;
+                data.next = null;
+                L.insertSorted(data);
+            }
+            pegawai_list = L.pegawaiList();
+        }
+        catch (FileNotFoundException error){
+            System.out.println("File not found");
         }
 
-        System.out.println(data_urut_nip);
+        L.printNode();
 
+//        YANG DICOMMENT INI ADALAH TUGAS MINGGU KEMARIN YANG MELAKUKAN SORTING ARRAY TANPA DOUBLY LINKEDLIST
+//        List<List<String>> data_urut_nip = new ArrayList<>();
+//        try(BufferedReader br = new BufferedReader(new FileReader("resources/data_pegawai.txt"))){
+//            String line;
+//            while ((line = br.readLine())!=null){
+//                String[] values = line.split(",");
+//                    data_urut_nip.add(Arrays.asList(values));
+//            }
+//        }
+//        data_urut_nip.sort(Comparator.comparing(l -> l.get(1)));
+//        List<Pegawai> pegawai_list = new ArrayList<>();
+//
+//        for (List data:data_urut_nip
+//             ) {
+//            Pegawai pegawai = new Pegawai();
+//            pegawai.setNama((String) data.get(0));
+//            pegawai.setNip((String) data.get(1));
+//            pegawai.setMasa((String) data.get(2));
+//            pegawai.setGaji((String) data.get(3));
+//            pegawai_list.add(pegawai);
+//        }
+
+
+
+        Scanner scanner = new Scanner(System.in);
         System.out.println("SELAMAT DATANG DI SISTEM KEPEGAWAIAN\n");
         int pilihan = 1;
         while(pilihan!=0){
